@@ -16,7 +16,7 @@ namespace OCISDK.ObjectStorage.Request
         public string CompartmentId { get; set; }
 
         /// <summary>
-        /// bukcet name
+        /// bucket name
         /// </summary>
         public string BucketName { get; set; }
 

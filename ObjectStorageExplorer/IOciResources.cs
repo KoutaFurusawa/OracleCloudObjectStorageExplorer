@@ -27,9 +27,9 @@ namespace ObjectStorageExplorer
 
         IEnumerable<OCISDK.Identity.Model.Compartment> GetAllCompartments(string tenantId);
 
-        IEnumerable<BukcetInfo> GetAllBuckets(string nameSpaceName, string compartmentId);
+        IEnumerable<BucketInfo> GetAllBuckets(string nameSpaceName, string compartmentId);
 
-        IEnumerable<BukcetInfo> GetBuckets(string nameSpaceName, string compartmentId, string regionName);
+        IEnumerable<BucketInfo> GetBuckets(string nameSpaceName, string compartmentId, string regionName);
 
         OCISDK.ObjectStorage.Response.HeadBucketResponse GetBucketHead(string nameSpaceName, string bucketName, string regionName);
 

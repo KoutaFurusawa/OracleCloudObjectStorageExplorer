@@ -167,7 +167,7 @@ namespace ObjectStorageExplorer
             return res;
         }
 
-        public class BukcetInfo
+        public class BucketInfo
         {
             public string Name { get; set; }
 
@@ -184,9 +184,9 @@ namespace ObjectStorageExplorer
         /// <param name="nameSpaceName"></param>
         /// <param name="compartmentId"></param>
         /// <returns></returns>
-        public IEnumerable<BukcetInfo> GetAllBuckets(string nameSpaceName, string compartmentId)
+        public IEnumerable<BucketInfo> GetAllBuckets(string nameSpaceName, string compartmentId)
         {
-            List<BukcetInfo> res = new List<BukcetInfo>();
+            List<BucketInfo> res = new List<BucketInfo>();
 
             var regions = GetRegions();
             var request = new ListBucketsRequest { NamespaceName = nameSpaceName, CompartmentId = compartmentId, Limit = 10 };
@@ -199,7 +199,7 @@ namespace ObjectStorageExplorer
 
                     foreach (var item in buckets.Items)
                     {
-                        res.Add(new BukcetInfo() { Name = item.Name, Region = region.RegionName, Id = item.Id, ModifiedTime=item.TimeCreated });
+                        res.Add(new BucketInfo() { Name = item.Name, Region = region.RegionName, Id = item.Id, ModifiedTime=item.TimeCreated });
                     }
 
                     if (string.IsNullOrEmpty(buckets.OpcNextPage))
@@ -221,9 +221,9 @@ namespace ObjectStorageExplorer
         /// <param name="compartmentId"></param>
         /// <param name="regionName"></param>
         /// <returns></returns>
-        public IEnumerable<BukcetInfo> GetBuckets(string nameSpaceName, string compartmentId, string regionName)
+        public IEnumerable<BucketInfo> GetBuckets(string nameSpaceName, string compartmentId, string regionName)
         {
-            List<BukcetInfo> res = new List<BukcetInfo>();
+            List<BucketInfo> res = new List<BucketInfo>();
             var request = new ListBucketsRequest { NamespaceName = nameSpaceName, CompartmentId = compartmentId, Limit = 10 };
             ObjectStorageClient.SetRegion(regionName);
             while (true)
@@ -232,7 +232,7 @@ namespace ObjectStorageExplorer
 
                 foreach (var item in buckets.Items)
                 {
-                    res.Add(new BukcetInfo() { Name = item.Name, Region = regionName, Id = item.Id });
+                    res.Add(new BucketInfo() { Name = item.Name, Region = regionName, Id = item.Id });
                 }
 
                 if (string.IsNullOrEmpty(buckets.OpcNextPage))
