@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8884076-BD84-4E1E-8C8A-B625B46E2ABC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>OCISDK</RootNamespace>
+    <AssemblyName>OCISDK</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <DeterministicSourceRoot>/</DeterministicSourceRoot>
+    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</RepoRoot>
+    <PathMap>$(RepoRoot)=$(DeterministicSourceRoot)</PathMap>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil, Version=2.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jil.2.17.0\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.7.1.1\lib\netstandard2.0\Polly.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil, Version=4.7.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sigil.4.7.0\lib\net45\Sigil.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientConfig.cs" />
+    <Compile Include="Common\ConfigFileReader.cs" />
+    <Compile Include="Common\DefaultWebRequestPolicy.cs" />
+    <Compile Include="Common\EnumParam.cs" />
+    <Compile Include="Common\ExpandableEnum.cs" />
+    <Compile Include="Common\HttpRequestHeaderParam.cs" />
+    <Compile Include="Common\IJsonSerializer.cs" />
+    <Compile Include="Common\IWebRequestPolicy.cs" />
+    <Compile Include="Common\IRestClient.cs" />
+    <Compile Include="Common\IRestClientAsync.cs" />
+    <Compile Include="Common\JsonDefaultSerializer.cs" />
+    <Compile Include="Common\OCID.cs" />
+    <Compile Include="Common\Regions.cs" />
+    <Compile Include="Common\RestClient.cs" />
+    <Compile Include="Common\RestClientAsync.cs" />
+    <Compile Include="Common\RestOption.cs" />
+    <Compile Include="GeneralElement\GeneralElemenClient.cs" />
+    <Compile Include="GeneralElement\IGeneralElemenClient.cs" />
+    <Compile Include="IClientSetting.cs" />
+    <Compile Include="Identity\identityClient.cs" />
+    <Compile Include="Identity\IdentityClientAsync.cs" />
+    <Compile Include="Identity\IdentityServices.cs" />
+    <Compile Include="Identity\IIdentityClient.cs" />
+    <Compile Include="Identity\IIdentityClientAsync.cs" />
+    <Compile Include="Identity\Model\AddUserToGroupDetails.cs" />
+    <Compile Include="Identity\Model\AvailabilityDomain.cs" />
+    <Compile Include="Identity\Model\ChangeTagNamespaceCompartmentDetail.cs" />
+    <Compile Include="Identity\Model\Compartment.cs" />
+    <Compile Include="Identity\Model\CreateCompartmentDetails.cs" />
+    <Compile Include="Identity\Model\CreateIdentityProviderDetails.cs" />
+    <Compile Include="Identity\Model\CreatePolicyDetails.cs" />
+    <Compile Include="Identity\Model\CreateSaml2IdentityProviderDetails.cs" />
+    <Compile Include="Identity\Model\CreateTagDetails.cs" />
+    <Compile Include="Identity\Model\CreateTagNamespaceDetails.cs" />
+    <Compile Include="Identity\Model\CreateUserDetails.cs" />
+    <Compile Include="Identity\Model\IdentityProvider.cs" />
+    <Compile Include="Identity\Model\Policy.cs" />
+    <Compile Include="Identity\Model\Region.cs" />
+    <Compile Include="Identity\Model\RegionSubscription.cs" />
+    <Compile Include="Identity\Model\Tag.cs" />
+    <Compile Include="Identity\Model\TagDefault.cs" />
+    <Compile Include="Identity\Model\TagDefaultSummary.cs" />
+    <Compile Include="Identity\Model\TagNamespace.cs" />
+    <Compile Include="Identity\Model\TagNamespaceSummary.cs" />
+    <Compile Include="Identity\Model\TagSummary.cs" />
+    <Compile Include="Identity\Model\Tenancy.cs" />
+    <Compile Include="Identity\Model\UIPasswordDetails.cs" />
+    <Compile Include="Identity\Model\UpdateCompartmentDetails.cs" />
+    <Compile Include="Identity\Model\UpdateIdentityProviderDetails.cs" />
+    <Compile Include="Identity\Model\UpdatePolicyDetails.cs" />
+    <Compile Include="Identity\Model\UpdateSaml2IdentityProviderDetails.cs" />
+    <Compile Include="Identity\Model\UpdateStateDetails.cs" />
+    <Compile Include="Identity\Model\UpdateTagDetails.cs" />
+    <Compile Include="Identity\Model\UpdateTagNamespaceDetails.cs" />
+    <Compile Include="Identity\Model\UpdateUserCapabilitiesDetails.cs" />
+    <Compile Include="Identity\Model\UpdateUserDetails.cs" />
+    <Compile Include="Identity\Model\UserCapabilities.cs" />
+    <Compile Include="Identity\Model\UserDetails.cs" />
+    <Compile Include="Identity\Model\UserGroupMembership.cs" />
+    <Compile Include="Identity\Request\AddUserToGroupRequest.cs" />
+    <Compile Include="Identity\Request\ChangeTagNamespaceCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\CreateCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\CreateIdentityProviderRequest.cs" />
+    <Compile Include="Identity\Request\CreateOrResetUIPasswordRequest.cs" />
+    <Compile Include="Identity\Request\CreatePolicyRequest.cs" />
+    <Compile Include="Identity\Request\CreateTagNamespaceRequest.cs" />
+    <Compile Include="Identity\Request\CreateTagRequest.cs" />
+    <Compile Include="Identity\Request\CreateUserRequest.cs" />
+    <Compile Include="Identity\Request\DeleteCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\DeleteIdentityProviderRequest.cs" />
+    <Compile Include="Identity\Request\DeletePolicyRequest.cs" />
+    <Compile Include="Identity\Request\DeleteUserRequest.cs" />
+    <Compile Include="Identity\Request\GetCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\GetIdentityProviderRequest.cs" />
+    <Compile Include="Identity\Request\GetPolicyRequest.cs" />
+    <Compile Include="Identity\Request\GetTagDefaultRequest.cs" />
+    <Compile Include="Identity\Request\GetTagNamespaceRequest.cs" />
+    <Compile Include="Identity\Request\GetTagRequest.cs" />
+    <Compile Include="Identity\Request\GetTenancyRequest.cs" />
+    <Compile Include="Identity\Request\GetUserGroupMembershipRequest.cs" />
+    <Compile Include="Identity\Request\GetUserRequest.cs" />
+    <Compile Include="Identity\Request\ListAvailabilityDomainsRequest.cs" />
+    <Compile Include="Identity\Request\ListCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\ListCostTrackingTagsRequest.cs" />
+    <Compile Include="Identity\Request\ListIdentityProvidersRequest.cs" />
+    <Compile Include="Identity\Request\ListPoliciesRequest.cs" />
+    <Compile Include="Identity\Request\ListRegionSubscriptionsRequest.cs" />
+    <Compile Include="Identity\Request\ListTagDefaultsRequest.cs" />
+    <Compile Include="Identity\Request\ListTagNamespacesRequest.cs" />
+    <Compile Include="Identity\Request\ListTagsRequest.cs" />
+    <Compile Include="Identity\Request\ListUserGroupMembershipsRequest.cs" />
+    <Compile Include="Identity\Request\ListUsersRequest.cs" />
+    <Compile Include="Identity\Request\RemoveUserFromGroupRequest.cs" />
+    <Compile Include="Identity\Request\UpdateCompartmentRequest.cs" />
+    <Compile Include="Identity\Request\UpdateIdentityProviderRequest.cs" />
+    <Compile Include="Identity\Request\UpdatePolicyRequest.cs" />
+    <Compile Include="Identity\Request\UpdateTagNamespaceRequest.cs" />
+    <Compile Include="Identity\Request\UpdateTagRequest.cs" />
+    <Compile Include="Identity\Request\UpdateUserCapabilitiesRequest.cs" />
+    <Compile Include="Identity\Request\UpdateUserRequest.cs" />
+    <Compile Include="Identity\Request\UpdateUserStateRequest.cs" />
+    <Compile Include="Identity\Response\AddUserToGroupResponse.cs" />
+    <Compile Include="Identity\Response\ChangeTagNamespaceCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\CreateCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\CreateIdentityProviderResponse.cs" />
+    <Compile Include="Identity\Response\CreateOrResetUIPasswordResponse.cs" />
+    <Compile Include="Identity\Response\CreatePolicyResponse.cs" />
+    <Compile Include="Identity\Response\CreateTagNamespaceResponse.cs" />
+    <Compile Include="Identity\Response\CreateTagResponse.cs" />
+    <Compile Include="Identity\Response\CreateUserResponse.cs" />
+    <Compile Include="Identity\Response\DeleteCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\DeleteIdentityProviderResponse.cs" />
+    <Compile Include="Identity\Response\DeletePolicyResponse.cs" />
+    <Compile Include="Identity\Response\DeleteUserResponse.cs" />
+    <Compile Include="Identity\Response\GetCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\GetIdentityProviderResponse.cs" />
+    <Compile Include="Identity\Response\GetPolicyResponse.cs" />
+    <Compile Include="Identity\Response\GetTagDefaultResponse.cs" />
+    <Compile Include="Identity\Response\GetTagNamespaceResponse.cs" />
+    <Compile Include="Identity\Response\GetTagResponse.cs" />
+    <Compile Include="Identity\Response\GetTenancyResponse.cs" />
+    <Compile Include="Identity\Response\GetUserGroupMembershipResponse.cs" />
+    <Compile Include="Identity\Response\GetUserResponse.cs" />
+    <Compile Include="Identity\Response\ListAvailabilityDomainsResponse.cs" />
+    <Compile Include="Identity\Response\ListCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\ListCostTrackingTagsResponse.cs" />
+    <Compile Include="Identity\Response\ListIdentityProvidersResponse.cs" />
+    <Compile Include="Identity\Response\ListPoliciesResponse.cs" />
+    <Compile Include="Identity\Response\ListRegionsResponse.cs" />
+    <Compile Include="Identity\Response\ListRegionSubscriptionsResponse.cs" />
+    <Compile Include="Identity\Response\ListTagDefaultsResponse.cs" />
+    <Compile Include="Identity\Response\ListTagNamespacesResponse.cs" />
+    <Compile Include="Identity\Response\ListTagsResponse.cs" />
+    <Compile Include="Identity\Response\ListUserGroupMembershipsResponse.cs" />
+    <Compile Include="Identity\Response\ListUsersResponse.cs" />
+    <Compile Include="Identity\Response\RemoveUserFromGroupResponse.cs" />
+    <Compile Include="Identity\Response\UpdateCompartmentResponse.cs" />
+    <Compile Include="Identity\Response\UpdateIdentityProviderResponse.cs" />
+    <Compile Include="Identity\Response\UpdatePolicyResponse.cs" />
+    <Compile Include="Identity\Response\UpdateTagNamespaceResponse.cs" />
+    <Compile Include="Identity\Response\UpdateTagResponse.cs" />
+    <Compile Include="Identity\Response\UpdateUserCapabilitiesResponse.cs" />
+    <Compile Include="Identity\Response\UpdateUserResponse.cs" />
+    <Compile Include="Identity\Response\UpdateUserStateResponse.cs" />
+    <Compile Include="IOciSession.cs" />
+    <Compile Include="IOciSigner.cs" />
+    <Compile Include="ObjectStorage\IO\ObjectStorageFileInfo.cs" />
+    <Compile Include="ObjectStorage\IO\ObjectStorageFileSystemInfo.cs" />
+    <Compile Include="ObjectStorage\IO\ObjectStorageDirectoryInfo.cs" />
+    <Compile Include="ObjectStorage\IObjectStorageClient.cs" />
+    <Compile Include="ObjectStorage\IObjectStorageClientAsync.cs" />
+    <Compile Include="ObjectStorage\Model\Bucket.cs" />
+    <Compile Include="ObjectStorage\Model\BucketSummary.cs" />
+    <Compile Include="ObjectStorage\Model\CommitMultipartUploadDetails.cs" />
+    <Compile Include="ObjectStorage\Model\CommitMultipartUploadPartDetails.cs" />
+    <Compile Include="ObjectStorage\Model\CreateBucketDetails.cs" />
+    <Compile Include="ObjectStorage\Model\CreateMultipartUploadDetails.cs" />
+    <Compile Include="ObjectStorage\Model\CreatePreauthenticatedRequestDetails.cs" />
+    <Compile Include="ObjectStorage\Model\ListObjectDetails.cs" />
+    <Compile Include="ObjectStorage\Model\MultipartUploadDetails.cs" />
+    <Compile Include="ObjectStorage\Model\MultipartUploadPartSummary.cs" />
+    <Compile Include="ObjectStorage\Model\NamespaceMetadata.cs" />
+    <Compile Include="ObjectStorage\Model\ObjectLifecyclePolicyDetails.cs" />
+    <Compile Include="ObjectStorage\Model\ObjectLifecycleRuleDetails.cs" />
+    <Compile Include="ObjectStorage\Model\ObjectNameFilterDetails.cs" />
+    <Compile Include="ObjectStorage\Model\ObjectSummary.cs" />
+    <Compile Include="ObjectStorage\Model\PreauthenticatedRequestDetails.cs" />
+    <Compile Include="ObjectStorage\Model\PreauthenticatedRequestSummary.cs" />
+    <Compile Include="ObjectStorage\Model\PutObjectLifecyclePolicyDetails.cs" />
+    <Compile Include="ObjectStorage\Model\RenameObjectDetails.cs" />
+    <Compile Include="ObjectStorage\Model\RestoreObjectsDetails.cs" />
+    <Compile Include="ObjectStorage\Model\UpdateBucketDetails.cs" />
+    <Compile Include="ObjectStorage\Model\UpdateNamespaceMetadataDetails.cs" />
+    <Compile Include="ObjectStorage\Model\WorkRequestDetails.cs" />
+    <Compile Include="ObjectStorage\Model\WorkRequestError.cs" />
+    <Compile Include="ObjectStorage\Model\WorkRequestLogEntry.cs" />
+    <Compile Include="ObjectStorage\Model\WorkRequestResource.cs" />
+    <Compile Include="ObjectStorage\Model\WorkRequestSummary.cs" />
+    <Compile Include="ObjectStorage\ObjectStorageClient.cs" />
+    <Compile Include="ObjectStorage\ObjectStorageClientAsync.cs" />
+    <Compile Include="ObjectStorage\IO\ObjectStorageHelper.cs" />
+    <Compile Include="ObjectStorage\ObjectStorageServices.cs" />
+    <Compile Include="ObjectStorage\Request\AbortMultipartUploadRequest.cs" />
+    <Compile Include="ObjectStorage\Request\CancelWorkRequestRequest.cs" />
+    <Compile Include="ObjectStorage\Request\CommitMultipartUploadRequest.cs" />
+    <Compile Include="ObjectStorage\Request\CreateBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\CreateMultipartUploadRequest.cs" />
+    <Compile Include="ObjectStorage\Request\CreatePreauthenticatedRequestRequest.cs" />
+    <Compile Include="ObjectStorage\Request\DeleteBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\DeleteObjectLifecyclePolicyRequest.cs" />
+    <Compile Include="ObjectStorage\Request\DeleteObjectRequest.cs" />
+    <Compile Include="ObjectStorage\Request\DeleteObjectsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\DeletePreauthenticatedRequestRequest.cs" />
+    <Compile Include="GeneralElement\GetBucketLocationRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetNamespaceMetadataRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetNamespaceRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetObjectLifecyclePolicyRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetObjectRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetPreauthenticatedRequestRequest.cs" />
+    <Compile Include="ObjectStorage\Request\GetWorkRequestRequest.cs" />
+    <Compile Include="ObjectStorage\Request\HeadBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\HeadObjectRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListBucketsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListMultipartUploadPartsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListMultipartUploadsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListObjectsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListPreauthenticatedRequestsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListWorkRequestErrorsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListWorkRequestLogsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ListWorkRequestsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\PutObjectLifecyclePolicyRequest.cs" />
+    <Compile Include="ObjectStorage\Request\PutObjectRequest.cs" />
+    <Compile Include="ObjectStorage\Request\ReencryptBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\RenameObjectRequest.cs" />
+    <Compile Include="ObjectStorage\Request\RestoreObjectsRequest.cs" />
+    <Compile Include="ObjectStorage\Request\UpdateBucketRequest.cs" />
+    <Compile Include="ObjectStorage\Request\UpdateNamespaceMetadataRequest.cs" />
+    <Compile Include="ObjectStorage\Request\UploadPartRequest.cs" />
+    <Compile Include="ObjectStorage\Response\AbortMultipartUploadResponse.cs" />
+    <Compile Include="ObjectStorage\Response\CancelWorkRequestResponse.cs" />
+    <Compile Include="ObjectStorage\Response\CommitMultipartUploadResponse.cs" />
+    <Compile Include="ObjectStorage\Response\CreateBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\CreateMultipartUploadResponse.cs" />
+    <Compile Include="ObjectStorage\Response\CreatePreauthenticatedRequestResponse.cs" />
+    <Compile Include="ObjectStorage\Response\DeleteBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\DeleteObjectLifecyclePolicyResponse.cs" />
+    <Compile Include="ObjectStorage\Response\DeleteObjectResponse.cs" />
+    <Compile Include="ObjectStorage\Response\DeleteObjectsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\DeletePreauthenticatedRequestResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetNamespaceMetadataResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetObjectLifecyclePolicyResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetObjectResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetPreauthenticatedRequestResponse.cs" />
+    <Compile Include="ObjectStorage\Response\GetWorkRequestResponse.cs" />
+    <Compile Include="ObjectStorage\Response\HeadBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\HeadObjectResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListBucketsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListMultipartUploadPartsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListMultipartUploadsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListObjectsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListPreauthenticatedRequestsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListWorkRequestErrorsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListWorkRequestLogsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ListWorkRequestsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\PutObjectLifecyclePolicyResponse.cs" />
+    <Compile Include="ObjectStorage\Response\PutObjectResponse.cs" />
+    <Compile Include="ObjectStorage\Response\ReencryptBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\RenameObjectResponse.cs" />
+    <Compile Include="ObjectStorage\Response\RestoreObjectsResponse.cs" />
+    <Compile Include="ObjectStorage\Response\UpdateBucketResponse.cs" />
+    <Compile Include="ObjectStorage\Response\UpdateNamespaceMetadataResponse.cs" />
+    <Compile Include="ObjectStorage\Response\UploadPartResponse.cs" />
+    <Compile Include="OciSession.cs" />
+    <Compile Include="OciSigner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceClient.cs" />
+    <Compile Include="ThreadSafeSigner.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Properties\endpoints.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

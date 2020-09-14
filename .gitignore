@@ -1,0 +1,13 @@
+﻿ObjectStorageExplorer/bin
+ObjectStorageExplorer/obj
+OCISDK/OCISDK/bin
+OCISDK/OCISDK/obj
+OCISDK/OCISDK.Test/bin
+OCISDK/OCISDK.Test/obj
+.vs
+OCISDK/packages
+packages
+ObjectStorageExplorer/App.config
+ObjectStorageExplorer/Properties/Settings.Designer.cs
+ObjectStorageExplorer/Properties/Settings.settings
+ObjectStorageExplorer/App.config

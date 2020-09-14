@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OCISDK": {
+      "commandName": "Project"
+    },
+    "Debug": {
+      "commandName": "Project"
+    }
+  }
+}
